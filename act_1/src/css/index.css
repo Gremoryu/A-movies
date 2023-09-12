@@ -1,0 +1,321 @@
+:root {
+  --morado: white;
+}
+/*REINICIAR LOS ESTILOS QUE POR DEFECTO EL NAVEGADOR TIENE*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*hace que el tamaño de un elemento sea más predecible y controlable al incluir el relleno y el borde en el tamaño total de la caja.*/
+}
+body {
+  background: linear-gradient(88deg, #000000, #280050);
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.contenedor {
+  width: 90%;
+  margin: auto;
+}
+header {
+  padding: 20px 0;
+  margin-top: 12px;
+  background-color: transparent;
+  position: absolute;
+  z-index: 1000; /* Un valor alto para asegurarse de que esté en la parte superior */
+  left: 0%;
+}
+
+header .contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /*centrar de forma vertical*/
+  height: 1px;
+ 
+
+}
+header .logotipo {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: normal;
+  color: var(--morado);
+  font-size: 30px;
+}
+header nav a {
+  color: #aaa;
+  text-decoration: none;
+  margin-right: 400px; /* Espacio entre enlaces */
+  margin-top: 20px;
+
+}
+header nav a:hover,
+header nav a.activo {
+  color: white;
+}
+/*-----------PELICULA PRINCIPAL----------*/
+.pelicula-principal {
+  font-size: 16px;
+  /*min-height:650px el min height cambia conforme al tamaño de la letra*/
+  min-height: 30.62em; /* cambia relativo al tamaño del texto  */
+  color: white;
+  background-image: /*primer fondo*/ linear-gradient(
+      rgba(0, 0, 0, 1.5) 20%,
+      rgba(0, 0, 0, 2.5) 100%
+    ),
+    /*segundo fondo*/ url("../images/idk.jpg"), url("../images/idk2.jpeg");
+  background-position: 10% 30%;
+  background-size: cover; /*para que la imagen ocupe el 100 % dispobile de la pantalla*/
+  margin-bottom: 3.12em;
+  display: flex;
+  align-items: end;
+  animation: slide 20s infinite alternate ease-in-out;
+  position: relative; /* Agrega esta línea */
+  margin-top: -10px;
+}
+.pelicula-fondo {
+  /* Nuevo estilo para el div de fondo */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: slide 20s infinite alternate ease-in-out;
+}
+.pelicula-principal .contenedor {
+  margin: 0 auto;
+  margin-bottom: 0em; /*100px*/
+  margin-bottom: 1em;
+}
+.pelicula-principal .titulo {
+  font-weight: 600;
+  font-size: 3.12em; /*50 px*/
+  margin-bottom: 0.1em; /*20 px se calcula conforme a los 16px*/
+}
+.pelicula-principal .descripcion {
+  font-weight: normal;
+  font-size: 1em;
+  line-height: 1.75em; /*28 px*/
+  max-width: 50%;
+  margin-bottom: 1.25em; /*20 px*/
+}
+.pelicula-principal .boton {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 0.31em; /*5px*/
+  padding: 0.93em 1.87em; /*15px 30px*/
+  color: white;
+  margin-right: 1.25em; /*20 px*/
+  cursor: pointer;
+  transition: 0.3s ease all;
+  font-size: 1.12em; /*18px*/
+}
+.pelicula-principal .boton:hover {
+  background-color: white;
+  color: #000;
+}
+.pelicula-principal .boton i {
+  margin-right: 1.25em; /*25px*/
+}
+@media screen and (max-width: 800px) {
+  header .logotipo {
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+  header .contenedor {
+    flex-direction: column;
+    text-align: center;
+   
+  }
+  .pelicula-principal {
+    font-size: 14px;
+  }
+  .pelicula-principal .descripcion {
+    max-width: 100%;
+  }
+}
+/*...........................Recientemente visto..........................*/
+
+.subtitulo1 {
+  display: flex;
+  margin-left: 1.7em;
+  margin-top: 0.1em;
+  margin-bottom: 1.1em;
+  color: white;
+  font-weight: 600;
+  font-size: 1.12em; /*50 px*/
+}
+.wrapper {
+  max-width: 1200px;
+  position: relative;
+  margin-bottom: 5em;
+  margin-left: 2em;
+}
+
+.wrapper i {
+  background: white;
+  height: 46px;
+  width: 46px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 46px;
+  border-radius: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+}
+.wrapper i:first-child {
+  left: -23px;
+  display: none;
+}
+
+.wrapper i:last-child {
+  right: -23px;
+}
+.wrapper .carousel {
+  font-size: 0px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.carousel.dragging {
+  scroll-behavior: auto;
+  cursor: grab;
+}
+
+.carousel.dragging img {
+  pointer-events: none;
+}
+
+.carousel img {
+  height: 330px;
+  object-fit: cover;
+  width: calc(55% / 3);
+  margin-left: 20px;
+}
+.carousel img:first-child {
+  margin-left: 0px;
+}
+@media screen and (max-width: 900px) {
+  .carousel img {
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel img {
+    width: 100%;
+  }
+}
+
+/* Estilos para el botón de navegación estilo HBO+ */
+nav {
+  font-family: "Bebas Neue", sans-serif;
+  color: #fff; /* Color del texto */
+  padding: 0 20px; /* Espaciado interno */
+  top: -14px;
+ 
+}
+
+.barra-hbo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /*centrar de forma vertical*/
+  width: 100%;
+  margin: 0 auto;
+  background: transparent;
+  position: relative;
+  margin-left: 27px;
+}
+
+.logo {
+  font-size: 24px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.enlaces {
+  display: flex;
+  
+}
+
+.boton-enlace {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 20px;
+  padding: 10px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease;
+}
+
+.boton-enlace:hover {
+  border-bottom: 2px solid #fff;
+  left: 20px;
+}
+
+.buscador {
+  display: flex;
+  align-items: center;
+  
+}
+
+.buscador input[type="text"] {
+  padding: 8px 30px 8px 10px;
+  border: none;
+  border-radius: 20px;
+  width: 200px;
+  margin-right: 10px; /* Espacio entre el campo de búsqueda y el icono */
+  font-size: 16px;
+  transition: width 0.3s ease;
+}
+
+.buscador input[type="text"]:focus {
+  width: 250px;
+  outline: none;
+}
+
+.icono-busqueda {
+  color: #666;
+  cursor: pointer;
+  margin-left: -30px;
+}
+
+.icono-busqueda:hover {
+  color: #333;
+}
+
+.nav-scroll {
+  background: linear-gradient(48deg, #000000, #231f27);
+  position: fixed;
+  width: 100%;
+  transition: background-color 0.3s ease-out;
+  z-index: 1;
+  top: -1px;
+  left: -30px;
+}
+
+/* Estilo base de la imagen */
+/* Estilo base de la imagen */
+/* Estilo base de la imagen */
+/* Estilo base del contenedor de imagen */
+.imagen-contenedor {
+  overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde */
+  width: 200px; /* Ajusta el ancho y alto del contenedor según tus necesidades */
+  height: 300px;
+}
+
+/* Estilo base de la imagen */
+.imagen-escala {
+  transition: transform 0.3s ease;
+  width: 100%; /* Asegura que la imagen llene todo el contenedor */
+  height: 100%;
+}
+
+/* Aplica un aumento de escala al pasar el cursor sobre la imagen */
+.imagen-escala:hover {
+  transform: scale(1.1); /* Aumenta el tamaño un 5% al hacer hover */
+  z-index: 1; /* Añade un índice Z para que la imagen se superponga a las demás */
+}
